@@ -25,7 +25,7 @@
     <!-- HEADER -->
     <header class="header">
         <div class="logo">
-            <a href="index.html">
+            <a href="<?php  bloginfo('url'); ?>">
                 <img src="<?php echo get_theme_file_uri('assets/logo.svg'); ?>" alt=" Logo de Vision Blog" />
             </a>
             <button type="button" class="btn-menu" id="btn-menu">
@@ -44,18 +44,12 @@
             </button>
         </div>
         <div class="contenedor-navbar" id="contenedor-navbar">
-            <ul class="navbar">
-                <li><a href="#">Actualidad</a></li>
-                <li><a href="#">Internacional</a></li>
-                <li><a href="#">Economía</a></li>
-                <li><a href="#">Cultura</a></li>
-                <li><a href="#">Salud</a></li>
-                <li><a href="#">Ciencia</a></li>
-                <li><a href="#">Deportes</a></li>
-                <li><a href="#">Entretenimiento</a></li>
-                <li><a href="#">Medio Ambiente</a></li>
-                <li><a href="#">Educación</a></li>
-            </ul>
+            <?php wp_nav_menu(array(
+                "container" => false,
+                "menu_class" => "navbar",
+                "theme_location" => "menu-header"
+            )); ?>
+            
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
