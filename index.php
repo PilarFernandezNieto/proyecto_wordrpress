@@ -2,75 +2,80 @@
 <!-- MAIN -->
 <main class="main contenedor">
   <section class="noticias-principales">
-    <a href="single.html" class="principal">
-      <div class="thumb">
-        <img src="./assets/img/0.png" alt="Noticia" />
-      </div>
-      <div class="info">
-        <h2 class="titulo">
-          Space X lanza satélite comercial desde Falcon Heavy
-        </h2>
-        <div class="meta">
-          <p class="categoria">Actualidad</p>
-          <span class="fecha">2 Enero de 2025</span>
-        </div>
-        <p class="extracto">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam
-          sunt cum autem esse deleniti doloremque facilis sed beatae nihil
-          delectus!
-        </p>
-      </div>
-    </a>
+    <!-- NOTICIA PRINCIPAL -->
+    <?php
+    $noticia_principal = new WP_Query(array(
+      'tag' => 'noticia-principal',
+      'post_per_page' => 1
+    ));
+    if ($noticia_principal->have_posts()) : while ($noticia_principal->have_posts()) : $noticia_principal->the_post();
+    ?>
+        <a href="<?php the_permalink(); ?>" class="principal">
+          <div class="thumb">
+            <img src="<?php the_post_thumbnail(); ?>" alt="Noticia" />
+          </div>
+          <div class="info">
+            <h2 class="titulo">
+              <?php the_title(); ?>
+            </h2>
+            <div class="meta">
+              <p class="categoria">
+                <?php
+                $categorias = get_the_category();
+                echo $categorias[0]->name;
+                ?>
+              </p>
+              <span class="fecha">
+                <?php get_the_date(); ?>
+              </span>
+            </div>
+            <div class="extracto">
+              <?php the_excerpt(); ?>
+            </div>
+          </div>
+        </a>
+      <?php endwhile;
+    else: ?>
+      <h3>No hay posts para mostrar</h3>
+    <?php endif;
+    wp_reset_postdata();
+    ?>
+    <!-- FIN NOTICIA PRINCIPAL -->
+
+    <!-- NOTICIAS DESTACADAS -->
     <div class="noticias-destacadas">
-      <a href="single.html" class="card">
-        <div class="thumb">
-          <img src="./assets/img/1.png" alt="" />
-        </div>
-        <div class="info">
-          <h3 class="titulo">Lorem ipsum dolor sit amet consectetur.</h3>
-          <div class="meta">
-            <p class="categoria">Actualidad</p>
-            <span class="fecha">1 Enero de 2025</span>
-          </div>
-        </div>
-      </a>
-      <a href="single.html" class="card">
-        <div class="thumb">
-          <img src="./assets/img/2.png" alt="" />
-        </div>
-        <div class="info">
-          <h3 class="titulo">Lorem ipsum dolor sit amet consectetur.</h3>
-          <div class="meta">
-            <p class="categoria">Actualidad</p>
-            <span class="fecha">1 Enero de 2025</span>
-          </div>
-        </div>
-      </a>
-      <a href="single.html" class="card">
-        <div class="thumb">
-          <img src="./assets/img/3.png" alt="" />
-        </div>
-        <div class="info">
-          <h3 class="titulo">Lorem ipsum dolor sit amet consectetur.</h3>
-          <div class="meta">
-            <p class="categoria">Actualidad</p>
-            <span class="fecha">1 Enero de 2025</span>
-          </div>
-        </div>
-      </a>
-      <a href="single.html" class="card">
-        <div class="thumb">
-          <img src="./assets/img/4.png" alt="" />
-        </div>
-        <div class="info">
-          <h3 class="titulo">Lorem ipsum dolor sit amet consectetur.</h3>
-          <div class="meta">
-            <p class="categoria">Actualidad</p>
-            <span class="fecha">1 Enero de 2025</span>
-          </div>
-        </div>
-      </a>
+      <?php
+      $noticias_destacadas = new WP_Query(array(
+        'tag' => 'noticias-destacadas',
+        'post_per_page' => 4
+      ));
+      if ($noticias_destacadas->have_posts()) : while ($noticias_destacadas->have_posts()) : $noticias_destacadas->the_post();
+      ?>
+          <a href="<?php the_permalink(); ?>" class="card">
+            <div class="thumb">
+              <img src="<?php the_post_thumbnail(); ?>" alt="" />
+            </div>
+            <div class="info">
+              <h3 class="titulo"><?php the_title(); ?></h3>
+              <div class="meta">
+                <p class="categoria">
+                  <?php
+                    $categorias = get_the_category();
+                    echo $categorias[0]->name;
+                  ?>
+                </p>
+                <span class="fecha"><?php echo get_the_date(); ?></span>
+              </div>
+            </div>
+          </a>
+        <?php endwhile;
+      else: ?>
+        <h3>No hay posts para mostrar</h3>
+      <?php endif;
+      wp_reset_postdata();
+      ?>
     </div>
+    <!-- FIN NOTICIAS DESTACADAS -->
   </section>
   <!-- GRID -->
   <div class="grid">
