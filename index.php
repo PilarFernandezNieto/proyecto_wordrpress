@@ -140,7 +140,7 @@
 
       <!-- PAGINACIOÓN -->
       <div class="paginacion">
-        
+        <a href="<?php echo get_previous_posts_page_link(null, $ultimas_noticias->max_num_pages); ?>" class="boton">Anterior</a>
         <?php if (get_previous_posts_link(null, $ultimas_noticias->max_num_pages)): ?>
           <a href="<?php echo get_previous_posts_page_link(null, $ultimas_noticias->max_num_pages); ?>" class="boton">Anterior</a>
         <?php else:  ?>
@@ -157,12 +157,7 @@
 
 
       <!-- BANNER PUBLICIDAD -->
-      <div class="anuncios">
-        <a href="#" class="anuncio">
-          <img src="./assets/img/banner.png" alt="" />
-          <p class="leyenda">Publicidad</p>
-        </a>
-      </div>
+      <?php dynamic_sidebar('after-posts'); ?>
       <!-- FIN BANNER PUBLICIDAD -->
     </section>
     <!-- FIN ÚLTIMAS NOTICIAS -->

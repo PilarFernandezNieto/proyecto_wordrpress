@@ -62,12 +62,7 @@
                     </a>
                 </div>
             </div>
-            <div class="publicidad">
-                <a href="#" class="anuncio">
-                    <img src="<?php echo get_theme_file_uri('assets/img/ad.png'); ?>"" alt="Publicidad" />
-                    <p>Publicidad</p>
-                </a>
-            </div>
+            <?php dynamic_sidebar('sidebar'); ?>
         </div>
     </aside>
     <!-- FIN SIDEBAR DERECHA -->

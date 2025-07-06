@@ -3,23 +3,21 @@
     <div class="contenedor">
         <div class="widgets">
             <div class="logo">
-                <img src="<?php echo get_theme_file_uri('assets/logo.svg'); ?>"" alt=" Logo de Vision Blog" />
+                <a href="<?php bloginfo('url'); ?>">
+                    <img src="<?php echo get_theme_file_uri('assets/logo.svg'); ?>" alt=" Logo de Vision Blog" />
+                </a>
             </div>
             <div class="enlaces">
-                <ul>
-                    <li><a href="#">Acerca de Vision</a></li>
-                    <li><a href="#">Trabajos</a></li>
-                    <li><a href="#">Media</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
+                <?php wp_nav_menu(array(
+                    "container" => false,
+                    "theme_location" => "menu-footer-1"
+                )); ?>
             </div>
             <div class="enlaces">
-                <ul>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">Eventos</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                    <li><a href="#">Publicidad</a></li>
-                </ul>
+                <?php wp_nav_menu(array(
+                    "container" => false,
+                    "theme_location" => "menu-footer-2"
+                )); ?>
             </div>
             <div class="redes-sociales">
                 <div class="redes">
@@ -81,7 +79,7 @@
     </div>
 </footer>
 <!-- FOOTER -->
- <?php  wp_footer(); ?>
+<?php wp_footer(); ?>
 </body>
 
 </html>
