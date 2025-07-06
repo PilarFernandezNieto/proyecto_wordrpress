@@ -140,7 +140,6 @@
 
       <!-- PAGINACIOÓN -->
       <div class="paginacion">
-        <a href="<?php echo get_previous_posts_page_link(null, $ultimas_noticias->max_num_pages); ?>" class="boton">Anterior</a>
         <?php if (get_previous_posts_link(null, $ultimas_noticias->max_num_pages)): ?>
           <a href="<?php echo get_previous_posts_page_link(null, $ultimas_noticias->max_num_pages); ?>" class="boton">Anterior</a>
         <?php else:  ?>

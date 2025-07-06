@@ -11,12 +11,28 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/normalize.css'); ?>" />
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/estilos.css'); ?>" />
+    <?php if (is_single() || is_page()): ?>
+        <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/single.css'); ?>" />
+    <?php endif; ?>
     <script
         src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
         crossorigin="anonymous"></script>
     <script src="<?php echo get_theme_file_uri('js/script.js') ?>" defer></script>
-    <title><?php echo get_bloginfo(); ?></title>
+
+    <title>
+        <?php
+        if (is_home()) {
+            echo get_bloginfo('name');
+        } elseif (is_single()) {
+            echo get_the_title();
+        } else {
+            echo get_bloginfo('name');
+        }
+        ?>
+
+    </title>
+
     <?php wp_head(); ?>
 </head>
 
@@ -25,7 +41,7 @@
     <!-- HEADER -->
     <header class="header">
         <div class="logo">
-            <a href="<?php  bloginfo('url'); ?>">
+            <a href="<?php bloginfo('url'); ?>">
                 <img src="<?php echo get_theme_file_uri('assets/logo.svg'); ?>" alt=" Logo de Vision Blog" />
             </a>
             <button type="button" class="btn-menu" id="btn-menu">
@@ -49,7 +65,7 @@
                 "menu_class" => "navbar",
                 "theme_location" => "menu-header"
             )); ?>
-            
+
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
