@@ -389,6 +389,9 @@ img {
         grid-template-columns: 70% 1fr;
         gap: 2rem;
         margin-bottom: 2rem;
+        &.single-col {
+            grid-template-columns: 1fr;
+        }
 
         .noticias {
             display: flex;
@@ -641,4 +644,19 @@ img {
         }
     }
 
+}
+
+
+/*-- 404 --*/
+.pagina-404 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4rem;
+    .titulo {
+        font-size: 4rem;
+    }
+    .subtitulo {
+        font-size: 2rem;
+    }
 }
